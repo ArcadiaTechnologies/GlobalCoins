@@ -12,11 +12,15 @@ import java.io.File;
 
 
 
-public class Main extends JavaPlugin {
+public class main extends JavaPlugin {
+    double TransactionRate;
+    int Supply;
+
+
+
     FileConfiguration config = this.getConfig();
     File configFile = new File(this.getDataFolder(), "config.yml");
     SQLConnection sqlConnection;
-    TransactionSystem transSystem;
     private Economy econ;
 
 
@@ -27,14 +31,13 @@ public class Main extends JavaPlugin {
     String database = "";
 
 
-    double TransactionRate;
-    int Supply;
 
 
 
 
 
-//Creates the config file if none exists
+
+    //Creates the config file if none exists
     public void configCreation(){
         if (configFile.exists()){
             getLogger().info("Config file exists! Will be loading it shortly.");
@@ -46,15 +49,14 @@ public class Main extends JavaPlugin {
             config.addDefault("Database Username:", "admin");
             config.addDefault("Database Password:","password");
             config.addDefault("Database Name:", "GlobalCoins");
-            config.addDefault("##################", "");
-            config.addDefault("##################", "");
             config.addDefault("Supply:", 100000);
             config.addDefault("Transaction Rate:", 25000);
+            config.options().copyDefaults(true);
             saveConfig();
         }
     }
 
-//Loads the config file from memory
+    //Loads the config file from memory
     public void configLoad(){
 
         host = config.getString("Database Host:");
@@ -71,7 +73,7 @@ public class Main extends JavaPlugin {
 
 
 
-//Enables the plugin
+    //Enables the plugin
     @Override
     public void onEnable() {
         configCreation();
@@ -104,8 +106,7 @@ public class Main extends JavaPlugin {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        transSystem = new TransactionSystem(sqlConnection, sender.toString(), TransactionRate );
-
+        TransactionSystem transSystem = new TransactionSystem(sqlConnection, sender.toString(), TransactionRate );
 
         if(cmd.getName().equalsIgnoreCase("gcoins")){
             if(args[0] == "buy" || args[0] == "buycoins"){

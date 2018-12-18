@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="GlobalCoins:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/GlobalCoins_jar</output-path>
+    <root id="archive" name="GlobalCoins.jar">
+      <element id="module-output" name="GlobalCoins" />
+      <element id="extracted-dir" path="$USER_HOME$/Documents/Vault.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Desktop/Build Tools/Spigot/Spigot-API/target/spigot-api-1.12.2-R0.1-SNAPSHOT-shaded.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
