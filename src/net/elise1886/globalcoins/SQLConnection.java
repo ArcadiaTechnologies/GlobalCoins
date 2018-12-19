@@ -4,35 +4,18 @@ import java.sql.*;
 public class SQLConnection {
     private Connection connection;
 
-    String host;
-    int port;
-    String username;
-    String password;
-    String database;
 
-    public SQLConnection(String host, int port, String username, String password, String database) {
-        this.host = host;
-        this.port = port;
-        this.username = username;
-        this.password = password;
-        this.database = database;
+
+
+
+    public SQLConnection(Connection connection) {
+        this.connection = connection;
+
     }
 
 
 
-    public void openConnection() throws SQLException, ClassNotFoundException {
-        if (connection != null && !connection.isClosed()) {
-            return;
-        }
 
-        synchronized (this) {
-            if (connection != null && !connection.isClosed()) {
-                return;
-            }
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://" + host + ":" + port + "/" + database, username, password);
-        }
-    }
 
 
 
@@ -41,6 +24,7 @@ public class SQLConnection {
     public void insert(String username, int coins){
         try
         {
+
         String sql = "INSERT INTO Coins (Username, Balance) VALUES (?, ?)";
         PreparedStatement prepedStatement = connection.prepareStatement(sql);
         prepedStatement.setString(1,username);
@@ -50,7 +34,7 @@ public class SQLConnection {
     }
         catch (Exception e)
         {
-            System.err.println("Got an exception!");
+            System.err.println("Got an exception in Insert!");
             System.err.println(e.getMessage());
         }
     }
@@ -74,7 +58,7 @@ public class SQLConnection {
         }
         catch (Exception e)
         {
-            System.err.println("Got an exception!");
+            System.err.println("Got an exception in Update!");
             System.err.println(e.getMessage());
         }
     }
@@ -96,7 +80,7 @@ public class SQLConnection {
         }
         catch (Exception e)
         {
-            System.err.println("Got an exception!");
+            System.err.println("Got an exception Balance!");
             System.err.println(e.getMessage());
         }
         return 0;

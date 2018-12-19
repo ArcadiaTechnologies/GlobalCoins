@@ -1,50 +1,53 @@
 package net.elise1886.globalcoins;
-import net.milkbowl.vault.chat.Chat;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.java.JavaPlugin;
 import net.milkbowl.vault.economy.*;
 
 
 
-public class TransactionSystem extends JavaPlugin{
-CommandSender msg;
-String prefix = ChatColor.BLACK + "[" + ChatColor.GREEN + "Coins" + ChatColor.BLACK + "] ";
+
+public class TransactionSystem{
+
+    String prefix = ChatColor.DARK_GRAY + "[" + ChatColor.GREEN + "Coins" + ChatColor.DARK_GRAY + "]" + ChatColor.WHITE;
 
     SQLConnection connection;
-    String username;
+    CommandSender sender;
     double TransactionRate;
-    private Economy economy;
+    String username;
+    Economy Eco;
 
-    public TransactionSystem(SQLConnection connection, String username, double TransactionRate) {
+    public TransactionSystem(SQLConnection connection, CommandSender sender, double TransactionRate, String username, Economy economy) {
         this.connection = connection;
-        this.username = username;
+        this.sender = sender;
         this.TransactionRate = TransactionRate;
-
+        this.username = username;
+        this.Eco = economy;
 
     }
 
+
+
     public int buyCoins(int amountOfCoinsToBuy, int supply){
-        Player player = Bukkit.getPlayer(username);
+        Player player = (Player) sender;
         if(amountOfCoinsToBuy > supply){
-            msg.sendMessage(prefix + "Sorry but " + amountOfCoinsToBuy + " exceeds the current supply. Please try a lower number!");
+            sender.sendMessage(prefix + "Sorry but " + amountOfCoinsToBuy + " exceeds the current supply. Please try a lower number!");
         }
         else{
             double price = TransactionRate * amountOfCoinsToBuy;
-            economy.withdrawPlayer(player, price);
+            Eco.withdrawPlayer(player, price);
             connection.update(username, amountOfCoinsToBuy);
-            msg.sendMessage(prefix + "You just bought " + ChatColor.GREEN + amountOfCoinsToBuy + ChatColor.WHITE +" for " + ChatColor.RED + price);
+            sender.sendMessage(prefix + "You just bought " + ChatColor.GREEN + amountOfCoinsToBuy + ChatColor.WHITE +" for " + ChatColor.RED + price);
             return  supply - amountOfCoinsToBuy;
         }
         return supply;
     }
 
     public int sellCoins(int amountOfCoinsToSell, int supply){
-        Player player = Bukkit.getPlayer(username);
+        Player player = (Player) sender;
         double price = TransactionRate * amountOfCoinsToSell;
-        economy.depositPlayer(player, price);
+        Eco.depositPlayer(player, price);
         int userBalance = connection.getBalance(username);
         int updatedBalance = userBalance - amountOfCoinsToSell;
         connection.update(username, updatedBalance);
@@ -53,7 +56,7 @@ String prefix = ChatColor.BLACK + "[" + ChatColor.GREEN + "Coins" + ChatColor.BL
 
     public void playerBalance(){
         int playerBal =  connection.getBalance(username);
-        msg.sendMessage(prefix + "Your current balance is " + ChatColor.GREEN + playerBal);
+        sender.sendMessage(prefix + "Your current balance is " + ChatColor.GREEN + playerBal);
     }
 
 
