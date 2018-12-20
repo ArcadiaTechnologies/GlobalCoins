@@ -7,15 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9ef836d-7fe6-47fa-bfc6-fccdd6593d75" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/net/elise1886/globalcoins/Database.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/GlobalCoins_jar/GlobalCoins.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/GlobalCoins_jar/GlobalCoins.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GlobalCoins/net/elise1886/globalcoins/SQLConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GlobalCoins/net/elise1886/globalcoins/SQLConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GlobalCoins/net/elise1886/globalcoins/TransactionSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GlobalCoins/net/elise1886/globalcoins/TransactionSystem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/GlobalCoins/net/elise1886/globalcoins/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GlobalCoins/net/elise1886/globalcoins/main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/net/elise1886/globalcoins/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/elise1886/globalcoins/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/net/elise1886/globalcoins/SQLConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/elise1886/globalcoins/SQLConnection.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/net/elise1886/globalcoins/TransactionSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/elise1886/globalcoins/TransactionSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/net/elise1886/globalcoins/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/elise1886/globalcoins/main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,12 +23,13 @@
     <session id="-1025114730">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -50,13 +46,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="6583" />
+          <entry key="java" value="6810" />
           <entry key="yml" value="299" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="6583" />
+          <entry key="JAVA" value="6810" />
           <entry key="YAML" value="299" />
         </counts>
       </usages-collector>
@@ -64,11 +60,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/elise1886/globalcoins/TransactionSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="20" column="29" lean-forward="true" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="42" />
+            <state relative-caret-position="385">
+              <caret line="50" column="29" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -79,8 +75,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/elise1886/globalcoins/main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="95" column="45" selection-start-line="95" selection-start-column="45" selection-end-line="95" selection-end-column="45" />
+            <state relative-caret-position="515">
+              <caret line="147" column="13" lean-forward="true" selection-start-line="147" selection-start-column="13" selection-end-line="147" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -88,11 +84,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/elise1886/globalcoins/SQLConnection.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="252">
+              <caret line="67" column="14" selection-start-line="67" selection-start-column="14" selection-end-line="67" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -117,13 +113,13 @@
         <option value="$PROJECT_DIR$/src/net/elise1886/globalcoins/config.yml" />
         <option value="$PROJECT_DIR$/src/plugin.yml" />
         <option value="$PROJECT_DIR$/src/net/elise1886/globalcoins/com/huskehhh/mysql/mysql/MySQL.java" />
-        <option value="$PROJECT_DIR$/src/net/elise1886/globalcoins/TransactionSystem.java" />
         <option value="$PROJECT_DIR$/src/net/elise1886/globalcoins/main.java" />
+        <option value="$PROJECT_DIR$/src/net/elise1886/globalcoins/TransactionSystem.java" />
         <option value="$PROJECT_DIR$/src/net/elise1886/globalcoins/SQLConnection.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-1" />
     <option name="y" value="23" />
     <option name="width" value="1440" />
@@ -137,7 +133,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -168,10 +163,11 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545196117756" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545271196849" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -212,10 +208,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="23" width="1440" height="791" extended-state="0" />
+    <frame x="-1" y="23" width="1440" height="791" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17453505" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17668097" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -247,13 +243,7 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/net/elise1886/globalcoins/config.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/elise1886/globalcoins/config.yml" />
     <entry file="file://$PROJECT_DIR$/src/plugin.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -261,13 +251,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/elise1886/globalcoins/com/huskehhh/mysql/mysql/MySQL.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="7" lean-forward="true" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/net/elise1886/globalcoins/com/huskehhh/mysql/mysql/MySQL.java" />
     <entry file="file://$PROJECT_DIR$/src/net/elise1886/globalcoins/mysql/MySQL.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="696">
@@ -278,30 +262,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/elise1886/globalcoins/TransactionSystem.java">
+    <entry file="file://$PROJECT_DIR$/src/net/elise1886/globalcoins/SQLConnection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="20" column="29" lean-forward="true" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="252">
+          <caret line="67" column="14" selection-start-line="67" selection-start-column="14" selection-end-line="67" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/elise1886/globalcoins/main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="95" column="45" selection-start-line="95" selection-start-column="45" selection-end-line="95" selection-end-column="45" />
+        <state relative-caret-position="515">
+          <caret line="147" column="13" lean-forward="true" selection-start-line="147" selection-start-column="13" selection-end-line="147" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/elise1886/globalcoins/SQLConnection.java">
+    <entry file="file://$PROJECT_DIR$/src/net/elise1886/globalcoins/TransactionSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="32" lean-forward="true" selection-start-line="32" selection-end-line="32" />
+        <state relative-caret-position="385">
+          <caret line="50" column="29" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

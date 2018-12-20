@@ -87,6 +87,13 @@ public class main extends JavaPlugin {
         MySQL MySQL = new MySQL(host, port, database, username, password);
         try {
                 c = MySQL.openConnection();
+
+                if (MySQL.checkConnection() == false){
+                    System.err.println("Error, the database connection is closes!");
+                }
+                else{
+                    System.out.println("Database Connected");
+                }
         }
         catch (Exception e)
         {

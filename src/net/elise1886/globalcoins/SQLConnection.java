@@ -44,7 +44,7 @@ public class SQLConnection {
 
 
     //Updates the users balance
-    public void update(String username, int coinsToAdd){
+    public void updateBuy(String username, int coinsToAdd){
         try
         {
             int coins = getBalance(username);
@@ -52,6 +52,23 @@ public class SQLConnection {
             String sql = "UPDATE Coins SET Balance=? WHERE Username=?";
             PreparedStatement prepedStatement = connection.prepareStatement(sql);
             prepedStatement.setInt(1, totalCoins);
+            prepedStatement.setString(2, username);
+            prepedStatement.execute();
+
+        }
+        catch (Exception e)
+        {
+            System.err.println("Got an exception in Update!");
+            System.err.println(e.getMessage());
+        }
+    }
+    public void updateSell(String username, int coinsToSubtract){
+        try
+        {
+            //int coins = getBalance(username);
+            String sql = "UPDATE Coins SET Balance=? WHERE Username=?";
+            PreparedStatement prepedStatement = connection.prepareStatement(sql);
+            prepedStatement.setInt(1, coinsToSubtract);
             prepedStatement.setString(2, username);
             prepedStatement.execute();
 
@@ -75,7 +92,10 @@ public class SQLConnection {
                 PreparedStatement prepedStatement = connection.prepareStatement(sql);
                 prepedStatement.setString(1,username);
                 ResultSet rs = prepedStatement.executeQuery();
-                    return rs.getInt("Balance");
+                //System.out.println(rs);
+                   while(rs.next()){
+                    return rs.getInt("Balance");}
+
 
         }
         catch (Exception e)
