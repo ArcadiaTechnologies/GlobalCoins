@@ -138,9 +138,7 @@ public class main extends JavaPlugin {
         else{
             String username = sender.getName();
             transSystem = new TransactionSystem(sqlConnection, sender, TransactionRate, username, econ);
-            if (args.length == 0){
-                sender.sendMessage(prefix + "You did not type any arguments, Please use buy/sell/bal");
-            }
+
 
             try{
                 if(cmd.getName().equalsIgnoreCase("gcoins")){
