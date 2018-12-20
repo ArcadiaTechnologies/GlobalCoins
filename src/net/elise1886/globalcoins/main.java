@@ -43,6 +43,7 @@ public class main extends JavaPlugin {
 
 
 
+
     //Creates the config file if none exists
     public void configCreation(){
         if (configFile.exists()){
@@ -101,7 +102,7 @@ public class main extends JavaPlugin {
             System.err.println(e.getMessage());
         }
         sqlConnection = new SQLConnection(c);
-        //getCommand("gcoins").setExecutor(this);
+        getCommand("gcoins").setExecutor(this);
 
 
 
@@ -110,9 +111,6 @@ public class main extends JavaPlugin {
             Bukkit.getPluginManager().disablePlugin(this);
             return;
         }
-
-
-
     }
 
     private boolean setupEconomy() {
@@ -128,31 +126,68 @@ public class main extends JavaPlugin {
         return econ != null;
     }
 
+
+
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
         if (!(sender instanceof Player)){
-
-        }else{
+            sender.sendMessage("Error, you are not a player!");
+        }
+        else{
             String username = sender.getName();
             transSystem = new TransactionSystem(sqlConnection, sender, TransactionRate, username, econ);
             if (args.length == 0){
                 sender.sendMessage(prefix + "You did not type any arguments, Please use buy/sell/bal");
             }
-        if(cmd.getName().equalsIgnoreCase("gcoins")){
-            if(args[0].equalsIgnoreCase("buy") ){
-                transSystem.buyCoins(Integer.parseInt(args[1]), Supply);
+
+            try{
+                if(cmd.getName().equalsIgnoreCase("gcoins")){
+                    if(args[0].equalsIgnoreCase("buy" ) || args[0].equalsIgnoreCase("buycoins") && sender.hasPermission("globalcoins.transaction.buy")){
+                        Supply = transSystem.buyCoins(Integer.parseInt(args[1]), Supply);
+                        TransactionRate = transSystem.TransactionRate;
+                    }
+                        else {
+                            sender.sendMessage(prefix + "You are missing the " + ChatColor.RED + "globalcoins.transaction.buy " +ChatColor.WHITE+ "permission!");
+                        }
+                    if(args[0].equalsIgnoreCase("sell")|| args[0].equalsIgnoreCase("sellcoins") && sender.hasPermission("globalcoins.transaction.sell")){
+                        Supply = transSystem.sellCoins(Integer.parseInt(args[1]), Supply);
+                        TransactionRate = transSystem.TransactionRate;
+                    }
+                        else {
+                            sender.sendMessage(prefix + "You are missing the " + ChatColor.RED + "globalcoins.transaction.sell " +ChatColor.WHITE+ "permission!");
+                        }
+
+                    if(args[0].equalsIgnoreCase("bal")|| args[0].equalsIgnoreCase("balance") && sender.hasPermission("globalcoins.transaction.balance")){
+                        transSystem.playerBalance();
+                    }
+                        else {
+                            sender.sendMessage(prefix + "You are missing the " + ChatColor.RED + "globalcoins.transaction.balance " +ChatColor.WHITE+ "permission!");
+                        }
+                    if(args[0].equalsIgnoreCase("supply") && sender.hasPermission("globalcoins.transaction.supply")){
+                        sender.sendMessage(prefix + "The current supply is " + ChatColor.GREEN + Supply);
+                    }
+                        else {
+                            sender.sendMessage(prefix + "You are missing the " + ChatColor.RED + "globalcoins.transaction.supply " +ChatColor.WHITE+ "permission!");
+                        }
+                    if(args[0].equalsIgnoreCase("transactionrate") || args[0].equalsIgnoreCase("rate") && sender.hasPermission("globalcoins.transaction.rate")){
+                        sender.sendMessage(prefix + "The current Transaction Rate is " + ChatColor.GREEN + TransactionRate);
+                    }
+                        else {
+                            sender.sendMessage(prefix + "You are missing the " + ChatColor.RED + "globalcoins.transaction.supply " +ChatColor.WHITE+ "permission!");
+                        }
+                }
             }
-            else if(args[0].equalsIgnoreCase("sell")){
-                transSystem.sellCoins(Integer.parseInt(args[1]), Supply);
-            }
-            else if(args[0].equalsIgnoreCase("bal")){
-                transSystem.playerBalance();
-            }
-        }}
+
+            catch(Exception e){
+                sender.sendMessage(prefix + "You typed the command wrong, please use /gcoins buy or /gcoins sell or /gcoins bal");
+                }
 
         return  false;
-    }
+            }
+    return false;
+        }
 
 
 

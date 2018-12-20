@@ -52,7 +52,7 @@ public class TransactionSystem{
         int updatedBalance = userBalance - amountOfCoinsToSell;
         connection.updateSell(username, updatedBalance);
         sender.sendMessage(prefix + "You just sold " + ChatColor.GREEN + amountOfCoinsToSell + ChatColor.WHITE +" for " + ChatColor.RED + price);
-        return  supply;
+        return  supply + amountOfCoinsToSell;
     }
 
     public void playerBalance(){
