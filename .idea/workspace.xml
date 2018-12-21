@@ -7,6 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9ef836d-7fe6-47fa-bfc6-fccdd6593d75" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/net/elise1886/globalcoins/TransactionSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/elise1886/globalcoins/TransactionSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/net/elise1886/globalcoins/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/elise1886/globalcoins/main.java" afterDir="false" />
     </list>
@@ -21,13 +22,13 @@
     <session id="-1025114730">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="6" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.3" value="2" />
+          <entry key="project.open.time.3" value="3" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -44,13 +45,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="7456" />
+          <entry key="java" value="8106" />
           <entry key="yml" value="299" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="7456" />
+          <entry key="JAVA" value="8106" />
           <entry key="YAML" value="299" />
         </counts>
       </usages-collector>
@@ -61,8 +62,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/elise1886/globalcoins/TransactionSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="48" column="38" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
+            <state relative-caret-position="500">
+              <caret line="50" column="43" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -73,11 +74,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/elise1886/globalcoins/main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="140" selection-start-line="140" selection-end-line="140" />
+            <state relative-caret-position="613">
+              <caret line="225" lean-forward="true" selection-start-line="225" selection-end-line="225" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#setupEconomy#0;class#main#0" />
+                <element signature="method#setupPermissions#0;class#main#0" />
               </folding>
             </state>
           </provider>
@@ -122,7 +124,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -152,6 +153,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -197,10 +199,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="791" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="791" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1788269" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18097281" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -257,19 +259,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/elise1886/globalcoins/main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="140" selection-start-line="140" selection-end-line="140" />
+        <state relative-caret-position="613">
+          <caret line="225" lean-forward="true" selection-start-line="225" selection-end-line="225" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#setupEconomy#0;class#main#0" />
+            <element signature="method#setupPermissions#0;class#main#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/net/elise1886/globalcoins/TransactionSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="48" column="38" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
+        <state relative-caret-position="500">
+          <caret line="50" column="43" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

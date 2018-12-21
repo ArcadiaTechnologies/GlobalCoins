@@ -1,6 +1,7 @@
 package net.elise1886.globalcoins;
 
 import net.elise1886.globalcoins.mysql.MySQL;
+import net.milkbowl.vault.permission.Permission;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -13,6 +14,7 @@ import net.milkbowl.vault.economy.*;
 
 import java.io.File;
 import java.sql.Connection;
+import java.util.logging.Logger;
 
 
 public class main extends JavaPlugin {
@@ -26,6 +28,7 @@ public class main extends JavaPlugin {
     SQLConnection sqlConnection;
     TransactionSystem transSystem;
     private Economy econ;
+    private Permission perms;
     Connection c = null;
     String prefix = ChatColor.DARK_GRAY + "[" + ChatColor.GREEN + "Coins" + ChatColor.DARK_GRAY + "]" + ChatColor.WHITE;
 
@@ -111,6 +114,7 @@ public class main extends JavaPlugin {
             Bukkit.getPluginManager().disablePlugin(this);
             return;
         }
+        this.setupPermissions();
     }
 
     private boolean setupEconomy() {
@@ -126,64 +130,94 @@ public class main extends JavaPlugin {
         return econ != null;
     }
 
+    private boolean setupPermissions() {
+        RegisteredServiceProvider<Permission> rsp = getServer().getServicesManager().getRegistration(Permission.class);
+        perms = rsp.getProvider();
+        return perms != null;
+    }
 
-
+    public Permission getPermissions() {
+        return perms;
+    }
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        if (!(sender instanceof Player)){
-            sender.sendMessage("Error, you are not a player!");
+
+            if (!(sender instanceof Player)){
+                sender.sendMessage("Error, you are not a player!");
+            }
+            else{
+                String username = sender.getName();
+                transSystem = new TransactionSystem(sqlConnection, sender, TransactionRate, username, econ);
+
+                if(sender.isOp()) {
+                    try {
+                        if (cmd.getName().equalsIgnoreCase("gcoins")) {
+                            if (args[0].equalsIgnoreCase("buy") || args[0].equalsIgnoreCase("buycoins")) {
+                                Supply = transSystem.buyCoins(Integer.parseInt(args[1]), Supply);
+                                TransactionRate = transSystem.TransactionRate;
+                            } else if (args[0].equalsIgnoreCase("sell") || args[0].equalsIgnoreCase("sellcoins")) {
+                                Supply = transSystem.sellCoins(Integer.parseInt(args[1]), Supply);
+                                TransactionRate = transSystem.TransactionRate;
+                            } else if (args[0].equalsIgnoreCase("bal") || args[0].equalsIgnoreCase("balance")) {
+                                transSystem.playerBalance();
+                            } else if (args[0].equalsIgnoreCase("supply")) {
+                                sender.sendMessage(prefix + "The current supply is " + ChatColor.GREEN + Supply);
+                            } else if (args[0].equalsIgnoreCase("transactionrate") || args[0].equalsIgnoreCase("rate")) {
+                                sender.sendMessage(prefix + "The current Transaction Rate is " + ChatColor.GREEN + TransactionRate);
+                            }
+                        }
+                    } catch (Exception e) {
+                        sender.sendMessage(prefix + "You typed the command wrong, please use /gcoins buy or /gcoins sell or /gcoins bal");
+                    }
+                    return false;
+                }
+                else{
+                    try {
+                        if (cmd.getName().equalsIgnoreCase("gcoins")) {
+                            if (args[0].equalsIgnoreCase("buy") || args[0].equalsIgnoreCase("buycoins")) {
+                                if (sender.hasPermission("globalcoins.transaction.buy")) {
+                                    Supply = transSystem.buyCoins(Integer.parseInt(args[1]), Supply);
+                                    TransactionRate = transSystem.TransactionRate;
+                                } else {
+                                    sender.sendMessage(prefix + "You are missing the " + ChatColor.RED + "globalcoins.transaction.buy " + ChatColor.WHITE + "permission!");
+                                }
+                            } else if (args[0].equalsIgnoreCase("sell") || args[0].equalsIgnoreCase("sellcoins")) {
+                                if (sender.hasPermission("globalcoins.transaction.sell")) {
+                                    Supply = transSystem.sellCoins(Integer.parseInt(args[1]), Supply);
+                                    TransactionRate = transSystem.TransactionRate;
+                                } else {
+                                    sender.sendMessage(prefix + "You are missing the " + ChatColor.RED + "globalcoins.transaction.sell " + ChatColor.WHITE + "permission!");
+                                }
+                            } else if (args[0].equalsIgnoreCase("bal") || args[0].equalsIgnoreCase("balance")) {
+                                if (sender.hasPermission("globalcoins.transaction.balance")) {
+                                    transSystem.playerBalance();
+                                } else {
+                                    sender.sendMessage(prefix + "You are missing the " + ChatColor.RED + "globalcoins.transaction.balance " + ChatColor.WHITE + "permission!");
+                                }
+                            } else if (args[0].equalsIgnoreCase("supply")) {
+                                if (sender.hasPermission("globalcoins.admin.supply")) {
+                                    sender.sendMessage(prefix + "The current supply is " + ChatColor.GREEN + Supply);
+                                } else {
+                                    sender.sendMessage(prefix + "You are missing the " + ChatColor.RED + "globalcoins.admin.supply " + ChatColor.WHITE + "permission!");
+                                }
+                            } else if (args[0].equalsIgnoreCase("transactionrate") || args[0].equalsIgnoreCase("rate")) {
+                                if (sender.hasPermission("globalcoins.admin.rate")) {
+                                    sender.sendMessage(prefix + "The current Transaction Rate is " + ChatColor.GREEN + TransactionRate);
+                                } else {
+                                    sender.sendMessage(prefix + "You are missing the " + ChatColor.RED + "globalcoins.admin.rate " + ChatColor.WHITE + "permission!");
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception e) {
+                        sender.sendMessage(prefix + "You typed the command wrong, please use /gcoins buy or /gcoins sell or /gcoins bal");
+                        }
+                    return false;
+                }
         }
-        else{
-            String username = sender.getName();
-            transSystem = new TransactionSystem(sqlConnection, sender, TransactionRate, username, econ);
 
-
-            try{
-                if(cmd.getName().equalsIgnoreCase("gcoins")){
-                    if(args[0].equalsIgnoreCase("buy" ) || args[0].equalsIgnoreCase("buycoins") && sender.hasPermission("globalcoins.transaction.buy")){
-                        Supply = transSystem.buyCoins(Integer.parseInt(args[1]), Supply);
-                        TransactionRate = transSystem.TransactionRate;
-                    }
-                        else {
-                            sender.sendMessage(prefix + "You are missing the " + ChatColor.RED + "globalcoins.transaction.buy " +ChatColor.WHITE+ "permission!");
-                        }
-                    if(args[0].equalsIgnoreCase("sell")|| args[0].equalsIgnoreCase("sellcoins") && sender.hasPermission("globalcoins.transaction.sell")){
-                        Supply = transSystem.sellCoins(Integer.parseInt(args[1]), Supply);
-                        TransactionRate = transSystem.TransactionRate;
-                    }
-                        else {
-                            sender.sendMessage(prefix + "You are missing the " + ChatColor.RED + "globalcoins.transaction.sell " +ChatColor.WHITE+ "permission!");
-                        }
-
-                    if(args[0].equalsIgnoreCase("bal")|| args[0].equalsIgnoreCase("balance") && sender.hasPermission("globalcoins.transaction.balance")){
-                        transSystem.playerBalance();
-                    }
-                        else {
-                            sender.sendMessage(prefix + "You are missing the " + ChatColor.RED + "globalcoins.transaction.balance " +ChatColor.WHITE+ "permission!");
-                        }
-                    if(args[0].equalsIgnoreCase("supply") && sender.hasPermission("globalcoins.transaction.supply")){
-                        sender.sendMessage(prefix + "The current supply is " + ChatColor.GREEN + Supply);
-                    }
-                        else {
-                            sender.sendMessage(prefix + "You are missing the " + ChatColor.RED + "globalcoins.transaction.supply " +ChatColor.WHITE+ "permission!");
-                        }
-                    if(args[0].equalsIgnoreCase("transactionrate") || args[0].equalsIgnoreCase("rate") && sender.hasPermission("globalcoins.transaction.rate")){
-                        sender.sendMessage(prefix + "The current Transaction Rate is " + ChatColor.GREEN + TransactionRate);
-                    }
-                        else {
-                            sender.sendMessage(prefix + "You are missing the " + ChatColor.RED + "globalcoins.transaction.supply " +ChatColor.WHITE+ "permission!");
-                        }
-                }
-            }
-
-            catch(Exception e){
-                sender.sendMessage(prefix + "You typed the command wrong, please use /gcoins buy or /gcoins sell or /gcoins bal");
-                }
-
-        return  false;
-            }
     return false;
         }
 
@@ -192,13 +226,9 @@ public class main extends JavaPlugin {
 
     @Override
     public void onDisable(){
+    config.set("Transaction Rate: ", TransactionRate);
+    config.set("Supply: ", Supply);
+    getLogger().info("Current supply is " + Supply + " with a current TransactionRate of " + TransactionRate);
 
-    }
-
-
-
-
-
-
-
+}
 }

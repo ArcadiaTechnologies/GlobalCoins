@@ -36,7 +36,7 @@ public class TransactionSystem{
         }
         else{
             double price = TransactionRate * amountOfCoinsToBuy;
-            TransactionRate += (0.0005 * price) * amountOfCoinsToBuy;
+            TransactionRate += (0.0005 * price);
             Eco.withdrawPlayer(player, price);
             connection.updateBuy(username, amountOfCoinsToBuy);
             sender.sendMessage(prefix + "You just bought " + ChatColor.GREEN + amountOfCoinsToBuy + ChatColor.WHITE +" for " + ChatColor.RED + price);
@@ -48,7 +48,7 @@ public class TransactionSystem{
     public int sellCoins(int amountOfCoinsToSell, int supply){
         Player player = (Player) sender;
         double price = TransactionRate * amountOfCoinsToSell;
-        TransactionRate -= (0.0005 * price) * amountOfCoinsToSell;
+        TransactionRate -= (0.0005 * price);
         Eco.depositPlayer(player, price);
         int userBalance = connection.getBalance(username);
         int updatedBalance = userBalance - amountOfCoinsToSell;
