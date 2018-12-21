@@ -31,30 +31,47 @@ public class TransactionSystem{
 
     public int buyCoins(int amountOfCoinsToBuy, int supply){
         Player player = (Player) sender;
-        if(amountOfCoinsToBuy > supply){
-            sender.sendMessage(prefix + "Sorry but " + amountOfCoinsToBuy + " exceeds the current supply. Please try a lower number!");
+        if(amountOfCoinsToBuy < 0){
+            sender.sendMessage(prefix + "Please enter a positive number!");
+            return 0;
         }
         else{
-            double price = TransactionRate * amountOfCoinsToBuy;
-            TransactionRate += (0.0005 * price);
-            Eco.withdrawPlayer(player, price);
-            connection.updateBuy(username, amountOfCoinsToBuy);
-            sender.sendMessage(prefix + "You just bought " + ChatColor.GREEN + amountOfCoinsToBuy + ChatColor.WHITE +" for " + ChatColor.RED + price);
-            return  supply - amountOfCoinsToBuy;
+            if(amountOfCoinsToBuy > supply){
+                sender.sendMessage(prefix + "Sorry but " + amountOfCoinsToBuy + " exceeds the current supply. Please try a lower number!");
+            }
+            else{
+                double price = TransactionRate * amountOfCoinsToBuy;
+                    if(Eco.getBalance(player) < price){
+                        sender.sendMessage(prefix + "You do not have enough money to buy this amount of coins!");
+                    }
+                    else{
+                        TransactionRate += (0.0005 * price);
+                        Eco.withdrawPlayer(player, price);
+                        connection.updateBuy(username, amountOfCoinsToBuy);
+                        sender.sendMessage(prefix + "You just bought " + ChatColor.GREEN + amountOfCoinsToBuy + ChatColor.WHITE +" for " + ChatColor.RED + price);
+                        return  supply - amountOfCoinsToBuy;
+                    }
+            }
+            return supply;
         }
-        return supply;
     }
 
     public int sellCoins(int amountOfCoinsToSell, int supply){
-        Player player = (Player) sender;
-        double price = TransactionRate * amountOfCoinsToSell;
-        TransactionRate -= (0.0005 * price);
-        Eco.depositPlayer(player, price);
         int userBalance = connection.getBalance(username);
-        int updatedBalance = userBalance - amountOfCoinsToSell;
-        connection.updateSell(username, updatedBalance);
-        sender.sendMessage(prefix + "You just sold " + ChatColor.GREEN + amountOfCoinsToSell + ChatColor.WHITE +" for " + ChatColor.RED + price);
-        return  supply + amountOfCoinsToSell;
+            if(userBalance >= 0 ){
+                sender.sendMessage(prefix + "You currently do not have any coins to sell!");
+            }
+            else{
+                Player player = (Player) sender;
+                double price = TransactionRate * amountOfCoinsToSell;
+                TransactionRate -= (0.0005 * price);
+                Eco.depositPlayer(player, price);
+                int updatedBalance = userBalance - amountOfCoinsToSell;
+                connection.updateSell(username, updatedBalance);
+                sender.sendMessage(prefix + "You just sold " + ChatColor.GREEN + amountOfCoinsToSell + ChatColor.WHITE +" for " + ChatColor.RED + price);
+                return  supply + amountOfCoinsToSell;
+            }
+            return 0;
     }
 
     public void playerBalance(){
