@@ -226,8 +226,9 @@ public class main extends JavaPlugin {
 
     @Override
     public void onDisable(){
-    config.set("Transaction Rate: ", TransactionRate);
-    config.set("Supply: ", Supply);
+    config.set("Transaction Rate:", TransactionRate);
+    config.set("Supply:", Supply);
+    saveConfig();
     getLogger().info("Current supply is " + Supply + " with a current TransactionRate of " + TransactionRate);
 
 }

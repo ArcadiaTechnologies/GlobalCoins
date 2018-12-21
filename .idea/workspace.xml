@@ -7,8 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f9ef836d-7fe6-47fa-bfc6-fccdd6593d75" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/net/elise1886/globalcoins/TransactionSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/elise1886/globalcoins/TransactionSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/net/elise1886/globalcoins/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/net/elise1886/globalcoins/main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -45,13 +43,13 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="8106" />
+          <entry key="java" value="8116" />
           <entry key="yml" value="299" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="8106" />
+          <entry key="JAVA" value="8116" />
           <entry key="YAML" value="299" />
         </counts>
       </usages-collector>
@@ -59,11 +57,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/net/elise1886/globalcoins/TransactionSystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="50" column="43" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
+            <state relative-caret-position="20">
+              <caret line="31" column="60" lean-forward="true" selection-start-line="31" selection-start-column="60" selection-end-line="31" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -71,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/net/elise1886/globalcoins/main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="613">
-              <caret line="225" lean-forward="true" selection-start-line="225" selection-end-line="225" />
+            <state relative-caret-position="499">
+              <caret line="229" column="23" selection-start-line="229" selection-start-column="23" selection-end-line="229" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#setupEconomy#0;class#main#0" />
@@ -106,8 +104,8 @@
         <option value="$PROJECT_DIR$/src/plugin.yml" />
         <option value="$PROJECT_DIR$/src/net/elise1886/globalcoins/com/huskehhh/mysql/mysql/MySQL.java" />
         <option value="$PROJECT_DIR$/src/net/elise1886/globalcoins/SQLConnection.java" />
-        <option value="$PROJECT_DIR$/src/net/elise1886/globalcoins/main.java" />
         <option value="$PROJECT_DIR$/src/net/elise1886/globalcoins/TransactionSystem.java" />
+        <option value="$PROJECT_DIR$/src/net/elise1886/globalcoins/main.java" />
       </list>
     </option>
   </component>
@@ -257,24 +255,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/elise1886/globalcoins/main.java">
+    <entry file="file://$PROJECT_DIR$/src/net/elise1886/globalcoins/TransactionSystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="613">
-          <caret line="225" lean-forward="true" selection-start-line="225" selection-end-line="225" />
+        <state relative-caret-position="20">
+          <caret line="31" column="60" lean-forward="true" selection-start-line="31" selection-start-column="60" selection-end-line="31" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#setupEconomy#0;class#main#0" />
-            <element signature="method#setupPermissions#0;class#main#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/net/elise1886/globalcoins/TransactionSystem.java">
+    <entry file="file://$PROJECT_DIR$/src/net/elise1886/globalcoins/main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="50" column="43" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
+        <state relative-caret-position="499">
+          <caret line="229" column="23" selection-start-line="229" selection-start-column="23" selection-end-line="229" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#setupEconomy#0;class#main#0" />
+            <element signature="method#setupPermissions#0;class#main#0" />
           </folding>
         </state>
       </provider>
