@@ -1,7 +1,8 @@
 name: GlobalCoins
-version: 1.0
+version: 2.0
 author: Elise1886
 main: net.elise1886.globalcoins.main
 commands:
   gcoins:
     description: Main GlobalCoins command, sub commands are buy, sell, and bal!
+softdepend: [Vault]
