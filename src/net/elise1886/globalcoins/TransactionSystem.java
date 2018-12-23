@@ -27,6 +27,30 @@ public class TransactionSystem{
 
     }
 
+    public int giveCoins(int amountToGive, int supply){
+        if(amountToGive < 0){
+            sender.sendMessage(prefix + "Please enter a positive number!");
+        }
+        else if(amountToGive > supply){
+            sender.sendMessage(prefix + "Sorry but " + amountToGive + "exceeds the currenty supply. Please try a lower number!");
+        }
+        else{
+            connection.updateBuy(username, amountToGive);
+            return supply - amountToGive;
+        }
+        return supply;
+    }
+    public int takeCoins(int amountToTake, int supply){
+        if(amountToTake < 0 || amountToTake > supply){
+            sender.sendMessage(prefix + "Sorry what you entered is an error, please check to make sure your input is a positive number and does not exceed the current supply!");
+        }
+        else{
+            connection.updateSell(username, amountToTake);
+            return supply + amountToTake;
+        }
+        return  supply;
+    }
+
 
 
     public int buyCoins(int amountOfCoinsToBuy, int supply){

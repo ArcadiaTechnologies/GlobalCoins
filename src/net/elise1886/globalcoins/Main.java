@@ -14,6 +14,7 @@ import net.milkbowl.vault.economy.*;
 
 import java.io.File;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.util.logging.Logger;
 
 
@@ -67,7 +68,7 @@ public class main extends JavaPlugin {
     }
 
     //Loads the config file from memory
-    public void configLoad(){
+    public void configLoad( ){
 
         host = config.getString("Database Host:");
         port = config.getString("Database Port:");
@@ -78,6 +79,17 @@ public class main extends JavaPlugin {
         TransactionRate = config.getDouble("Transaction Rate:");
         getLogger().info("Config Loaded");
 
+    }
+    public void createTable(Connection connection){
+        try{
+        String sql = "CREATE TABLE IF NOT EXIST Coins ( Username TEXT NOT NULL , Balance INT NOT NULL)";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.execute();
+        }
+
+        catch (Exception e){
+            getLogger().severe("Table error!");
+        }
     }
 
 
@@ -105,6 +117,7 @@ public class main extends JavaPlugin {
             System.err.println(e.getMessage());
         }
         sqlConnection = new SQLConnection(c);
+        createTable(c);
         getCommand("gcoins").setExecutor(this);
 
 
@@ -142,14 +155,41 @@ public class main extends JavaPlugin {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        String username = sender.getName();
+        transSystem = new TransactionSystem(sqlConnection, sender, TransactionRate, username, econ);
 
-
+        if(sender.isOp() || !(sender instanceof Player)){
+            if(cmd.getName().equalsIgnoreCase("gcoins")){
+                if(args[0].equalsIgnoreCase("give")){
+                    Supply = transSystem.giveCoins(Integer.parseInt(args[1]), Supply);
+                }
+                else if(args[0].equalsIgnoreCase("take")){
+                    Supply = transSystem.takeCoins(Integer.parseInt(args[1]), Supply);
+                }
+            }
+        }
+        else{
+            if(cmd.getName().equalsIgnoreCase("gcoins")){
+                    if(args[0].equalsIgnoreCase("give") ){
+                        if(sender.hasPermission("globalcoins.admin.give")){
+                            Supply = transSystem.giveCoins(Integer.parseInt(args[1]), Supply);}
+                        else{
+                            sender.sendMessage(prefix + "You are missing the " + ChatColor.RED + "globalcoins.admin.give " + ChatColor.WHITE + "permission!");
+                        }
+                    }
+                    else if(args[0].equalsIgnoreCase("take")){
+                        if(sender.hasPermission("globalcoins.admin.take")){
+                        Supply = transSystem.takeCoins(Integer.parseInt(args[1]), Supply);}
+                        else{
+                            sender.sendMessage(prefix + "You are missing the " + ChatColor.RED + "globalcoins.admin.take " + ChatColor.WHITE + "permission!");
+                        }
+                    }
+            }
+        }
             if (!(sender instanceof Player)){
-                sender.sendMessage("Error, you are not a player!");
+                sender.sendMessage("Error, you are not a player, please run these commands in game!");
             }
             else{
-                String username = sender.getName();
-                transSystem = new TransactionSystem(sqlConnection, sender, TransactionRate, username, econ);
 
                 if(sender.isOp()) {
                     try {
